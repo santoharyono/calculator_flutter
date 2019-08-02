@@ -1,4 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:basic_calculator/constants.dart';
+import 'package:basic_calculator/widgets/calculator_button.dart';
+import 'package:basic_calculator/widgets/calculator_button_text.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(Calculator());
@@ -9,10 +12,6 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
-  final Color _primarySwatchColor = Colors.orange;
-  final Color _titleAppBarColor = Colors.white;
-  final Color _hairlineColor = Colors.grey.shade400;
-
   int valueA;
   int valueB;
   String operator;
@@ -30,12 +29,12 @@ class _CalculatorState extends State<Calculator> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: _primarySwatchColor),
+      theme: ThemeData(primarySwatch: kPrimarySwatchColor),
       home: Scaffold(
         appBar: AppBar(
           title: Text(
             'BASIC CALCULATOR',
-            style: TextStyle(color: _titleAppBarColor),
+            style: TextStyle(color: kTitleAppBarColor),
           ),
         ),
         body: Column(
@@ -67,21 +66,21 @@ class _CalculatorState extends State<Calculator> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         CalculatorButton(
-                          hairlineColor: _hairlineColor,
+                          hairlineColor: kHairlineColor,
                           primarySwatchColor: Colors.white,
                           flex: 2,
                           child: CalculatorButtonText(
                             text: 'C',
-                            color: _primarySwatchColor,
+                            color: kPrimarySwatchColor,
                           ),
                         ),
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 1,
                             child: Icon(Icons.backspace)),
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 1,
                             child: CalculatorButtonText(text: '/'))
@@ -92,22 +91,22 @@ class _CalculatorState extends State<Calculator> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 1,
                             child: CalculatorButtonText(text: '7')),
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 1,
                             child: CalculatorButtonText(text: '8')),
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 1,
                             child: CalculatorButtonText(text: '9')),
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 1,
                             child: CalculatorButtonText(text: 'X')),
@@ -118,22 +117,22 @@ class _CalculatorState extends State<Calculator> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 1,
                             child: CalculatorButtonText(text: '4')),
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 1,
                             child: CalculatorButtonText(text: '5')),
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 1,
                             child: CalculatorButtonText(text: '6')),
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 1,
                             child: CalculatorButtonText(text: '-')),
@@ -144,22 +143,22 @@ class _CalculatorState extends State<Calculator> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 1,
                             child: CalculatorButtonText(text: '1')),
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 1,
                             child: CalculatorButtonText(text: '2')),
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 1,
                             child: CalculatorButtonText(text: '3')),
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 1,
                             child: CalculatorButtonText(text: '+')),
@@ -170,12 +169,12 @@ class _CalculatorState extends State<Calculator> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 3,
                             child: CalculatorButtonText(text: '0')),
                         CalculatorButton(
-                            hairlineColor: _hairlineColor,
+                            hairlineColor: kHairlineColor,
                             primarySwatchColor: Colors.white,
                             flex: 1,
                             child: CalculatorButtonText(text: '='))
@@ -229,52 +228,5 @@ class _CalculatorState extends State<Calculator> {
         }
       }
     });
-  }
-}
-
-class CalculatorButton extends StatelessWidget {
-  const CalculatorButton(
-      {Key key,
-      @required Color hairlineColor,
-      @required Color primarySwatchColor,
-      @required int flex,
-      @required Widget child})
-      : _hairlineColor = hairlineColor,
-        _primarySwatchColor = primarySwatchColor,
-        _flex = flex,
-        _child = child,
-        super(key: key);
-
-  final Color _hairlineColor;
-  final Color _primarySwatchColor;
-  final int _flex;
-  final Widget _child;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: RaisedButton(
-        highlightColor: _hairlineColor,
-        onPressed: () {},
-        child: _child,
-        color: _primarySwatchColor,
-      ),
-      flex: _flex,
-    );
-  }
-}
-
-class CalculatorButtonText extends StatelessWidget {
-  final String text;
-  final Color color;
-
-  CalculatorButtonText({@required this.text, this.color});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(fontSize: 24.0, color: color),
-    );
   }
 }
