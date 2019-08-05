@@ -1,7 +1,7 @@
 class CalculatorService {
   int _valueA;
   int _valueB;
-  String _operator;
+  String _operator = '';
   StringBuffer stringBuffer = StringBuffer('0');
 
   void appendValue(String value) {
@@ -9,7 +9,11 @@ class CalculatorService {
     if (value == '=') {
       isDoCalculate = true;
     } else if (value == '/' || value == 'x' || value == '-' || value == '+') {
-      _operator = value;
+      if (_operator.isEmpty) {
+        _operator = value;
+      } else {
+        isDoCalculate = true;
+      }
     }
 
     if (!isDoCalculate) {
@@ -35,6 +39,20 @@ class CalculatorService {
             total = _valueA + _valueB;
         }
         stringBuffer.write(total);
+        if (value == '/' || value == 'x' || value == '-' || value == '+') {
+          _operator = value;
+          stringBuffer.write(value);
+        } else {
+          _operator = '';
+        }
+      } else {
+        String stringValue = stringBuffer.toString();
+        if (value == '/' || value == 'x' || value == '-' || value == '+') {
+          stringBuffer.clear();
+          stringBuffer.write(
+              stringValue.substring(0, stringValue.length - 1) + '' + value);
+          _operator = value;
+        }
       }
     }
   }
