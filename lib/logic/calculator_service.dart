@@ -47,6 +47,7 @@ class CalculatorService {
         }
       } else {
         String stringValue = stringBuffer.toString();
+        print(stringValue);
         if (value == '/' || value == 'x' || value == '-' || value == '+') {
           stringBuffer.clear();
           stringBuffer.write(
@@ -55,5 +56,27 @@ class CalculatorService {
         }
       }
     }
+  }
+
+  void deleteValue() {
+    String stringValue = stringBuffer.toString();
+    if (stringValue.length > 0) {
+      String lastChar = stringValue.substring(stringValue.length - 1);
+      if (lastChar == '/' ||
+          lastChar == 'x' ||
+          lastChar == '-' ||
+          lastChar == '+') {
+        _operator = '';
+      }
+      stringValue = stringValue.substring(0, stringValue.length - 1);
+      stringBuffer.clear();
+      stringBuffer.write(stringValue.length == 0 ? '0' : stringValue);
+    }
+  }
+
+  void clearValue() {
+    _operator = '';
+    stringBuffer.clear();
+    stringBuffer.write('0');
   }
 }

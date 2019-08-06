@@ -85,8 +85,7 @@ class _CalculatorState extends State<Calculator> {
                           ),
                           onPressed: () {
                             setState(() {
-                              _service.stringBuffer.clear();
-                              _service.stringBuffer.write('0');
+                              _service.clearValue();
                             });
                           },
                         ),
@@ -97,20 +96,7 @@ class _CalculatorState extends State<Calculator> {
                           child: Icon(Icons.backspace),
                           onPressed: () {
                             setState(() {
-                              var values = _service.stringBuffer
-                                  .toString()
-                                  .split('')
-                                  .toList();
-
-                              if (values.length > 1) {
-                                values.removeLast();
-                              } else {
-                                values = new List();
-                                values.add('0');
-                              }
-
-                              _service.stringBuffer.clear();
-                              _service.stringBuffer.write(values.join());
+                              _service.deleteValue();
                             });
                           },
                         ),
